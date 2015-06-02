@@ -10,7 +10,7 @@
 
 class IDrawable {
 public:
-	virtual void draw();
+	virtual void draw(){}
 };
 
 #endif /* SRC_SHAPE_IDRAWABLE_H_ */

@@ -9,9 +9,14 @@
 #define SRC_SHAPE_SHAPE_H_
 
 #include "IDrawable.h"
-#include "Colour.h"
+#include "util/Colour.h"
 
 class Shape : public IDrawable{
+
+public:
+	Shape(){}
+	Colour getColour(){return colour;}
+	void setColour(Colour c){colour=c;}
 
 protected:
 	Colour colour;
