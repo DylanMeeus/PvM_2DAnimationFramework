@@ -17,7 +17,7 @@
 #include "renderer/Renderer.h"
 #include "Circle.h"
 
-void Circle::draw()
+void Circle::draw() const
 {
 	// (a+ r.cos(theta), b + r.sin(theta))
 	// a == x; b == y

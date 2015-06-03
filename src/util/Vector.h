@@ -15,8 +15,11 @@ class Vector{
 public:
 	double x,y;
 	Vector(double x=0, double y=0): x(x), y(y) { }
-	friend Vector operator+(const Vector &v, const Point &p);
-
+	friend Vector operator+(const Vector &v, const Vector &w);
+	friend Vector operator-(const Vector &v, const Vector &w);
+	friend Vector operator*(const Vector &v, const Vector &w);
+	friend Vector operator*(const Vector &v, double scalar);
+	friend Vector operator*(double scalar,const Vector &v);
 };
 
 

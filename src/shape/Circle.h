@@ -18,17 +18,17 @@ private:
 	Point centre;
 
 public:
-
+	Circle(){}
 	Circle(Point centre, double radius, Colour colour): centre(centre), radius(radius){
 		Shape::setColour(colour);
 	};
-	double getRadius(){return radius;}
-	Point getCentre(){return centre;}
-	Colour getColour(){return this->colour;}
+	double getRadius() const{return radius;}
+	Point getCentre() const{return centre;}
+	Colour getColour() const{return this->colour;}
 	void setRadius(double r){radius=r;}
 	void setCentre(Point c){centre=c;}
 	void setColour(Colour c){this->colour=c;}
-	virtual void draw();
+	virtual void draw() const;
 };
 
 

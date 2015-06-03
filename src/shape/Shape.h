@@ -15,7 +15,7 @@ class Shape : public IDrawable{
 
 public:
 	Shape(){}
-	Colour getColour(){return colour;}
+	Colour getColour() const {return colour;}
 	void setColour(Colour c){colour=c;}
 
 protected:
