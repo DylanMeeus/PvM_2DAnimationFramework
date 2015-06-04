@@ -23,7 +23,7 @@ void Circle::draw() const
 	// a == x; b == y
 	// i == theta?
 	// More vertices == smoother circle. (Max 360)
-	glColor3f(0, 1, 0);
+	glColor3f(this->colour.r, this->colour.g, this->colour.b);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < 50; i++)
 	{

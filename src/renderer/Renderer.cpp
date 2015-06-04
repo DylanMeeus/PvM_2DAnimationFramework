@@ -23,7 +23,6 @@ void Renderer::render()
 	 glVertex2f(800, 450);
 	 glEnd();
 	 */
-	//DynamicCircle c(Point(10, 250), 8, Colour(1, 1, 0), Vector(5, 0));
 	this->C->draw();
 	this->C->update();
 }
