@@ -18,6 +18,7 @@ private:
 	Vector velocity;
 
 public:
+	DynamicCircle(){}
 	DynamicCircle(Point centre, double radius, Colour colour, Vector velocity) :
 			velocity(velocity)
 	{

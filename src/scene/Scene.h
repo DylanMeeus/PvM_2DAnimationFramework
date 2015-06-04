@@ -17,15 +17,15 @@ class Scene
 {
 private:
 	// Add to both vectors if it needs be drawn and animated
-	std::vector<IDrawable> drawables;
-	std::vector<IAnimatable> animatables;
+	std::vector<IDrawable*> drawables;
+	std::vector<IAnimatable*> animatables;
 
 public:
-	Scene();
-	std::vector<IDrawable> getDrawables(){return drawables;}
-	std::vector<IAnimatable> getAnimatables(){return animatables;}
-	void addDrawable(IDrawable drawable){drawables.push_back(drawable);}
-	void addAnimatable(IAnimatable animatable){animatables.push_back(animatable);}
+	Scene(){}
+	std::vector<IDrawable*> getDrawables() const {return drawables;}
+	std::vector<IAnimatable*> getAnimatables() const {return animatables;}
+	void addDrawable(IDrawable* drawable){drawables.push_back(drawable);}
+	void addAnimatable(IAnimatable* animatable){animatables.push_back(animatable);}
 
 };
 

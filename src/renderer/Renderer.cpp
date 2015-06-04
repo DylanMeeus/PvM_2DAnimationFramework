@@ -6,6 +6,8 @@
 #endif
 
 #include "renderer/Renderer.h"
+#include <iostream>
+#include <vector>
 
 void Renderer::render()
 {
@@ -23,7 +25,21 @@ void Renderer::render()
 	 glVertex2f(800, 450);
 	 glEnd();
 	 */
-	this->C->draw();
-	this->C->update();
+//	this->C->draw();
+//	this->C->update();
+	// Get them from the scene
+
+	std::vector<IDrawable*> drawables = this->scene.getDrawables();
+	for (std::vector<IDrawable>::size_type i = 0;i != drawables.size(); i++)
+	{
+		drawables[i]->draw();
+	}
+
+	std::vector<IAnimatable*> animatables = this->scene.getAnimatables();
+	for (std::vector<IAnimatable>::size_type i = 0;
+			i != animatables.size(); i++)
+	{
+		animatables[i]->update();
+	}
 }
 

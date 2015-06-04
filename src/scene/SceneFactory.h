@@ -8,12 +8,14 @@
 #ifndef SRC_SCENE_SCENEFACTORY_H_
 #define SRC_SCENE_SCENEFACTORY_H_
 
-#import "Scene.h"
+#include "Scene.h"
+#include <iostream>
 
 class SceneFactory
 {
 public:
-	Scene createScene(std::string filename);
+	SceneFactory(){}
+	static Scene createScene(const std::string & filename);
 
 };
 
