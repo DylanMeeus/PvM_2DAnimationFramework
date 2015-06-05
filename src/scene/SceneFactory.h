@@ -10,12 +10,13 @@
 
 #include "Scene.h"
 #include <iostream>
+#include "WorldWindow.h"
 
 class SceneFactory
 {
 public:
 	SceneFactory(){}
-	static Scene createScene(const std::string & filename);
+	static Scene createScene(const std::string & filename, WorldWindow * worldWindow);
 
 };
 

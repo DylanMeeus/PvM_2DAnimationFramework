@@ -13,10 +13,9 @@ private:
 	DynamicCircle *C = new DynamicCircle(Point(10,150),8,Colour(1,1,0),Vector(5,1));
 	Scene scene;
 public:
-	Renderer()
+	Renderer(Scene s)
 	{
-		SceneFactory factory = SceneFactory();
-		scene = factory.createScene("resources/sdl/circles.sdl");
+		scene = s;
 	}
 	void render();
 };
