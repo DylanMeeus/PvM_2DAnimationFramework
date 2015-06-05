@@ -33,3 +33,8 @@ void Circle::draw() const
 	}
 	glEnd();
 }
+
+void Circle::intersection(DynamicCircle * dynamicCircle)
+{
+
+}

@@ -8,10 +8,12 @@
 #ifndef SRC_SHAPE_IANIMATABLE_H_
 #define SRC_SHAPE_IANIMATABLE_H_
 
+class Scene;
+
 class IAnimatable
 {
 public:
-	virtual void update()
+	virtual void update(const Scene& scene)
 	{
 	}
 };

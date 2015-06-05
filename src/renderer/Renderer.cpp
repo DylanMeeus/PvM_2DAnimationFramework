@@ -39,7 +39,7 @@ void Renderer::render()
 	for (std::vector<IAnimatable>::size_type i = 0;
 			i != animatables.size(); i++)
 	{
-		animatables[i]->update();
+		animatables[i]->update(this->scene);
 	}
 }
 

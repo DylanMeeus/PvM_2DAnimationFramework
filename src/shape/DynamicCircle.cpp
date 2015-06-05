@@ -8,7 +8,9 @@
 #include "DynamicCircle.h"
 #include <iostream>
 
-void DynamicCircle::update()
+
+
+void DynamicCircle::update(const Scene& scene)
 {
 	// get current position
 	Point current = this->getCentre();
@@ -34,5 +36,10 @@ void DynamicCircle::update()
 	Vector w = this->velocity - 2 * (this->velocity.dot(m) * m);
 	this->velocity = w;
 	this->setCentre(current);
+
+}
+
+void DynamicCircle::intersection(DynamicCircle * dynamicCircle)
+{
 
 }

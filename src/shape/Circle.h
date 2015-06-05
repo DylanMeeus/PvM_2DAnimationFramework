@@ -29,6 +29,7 @@ public:
 	void setCentre(Point c){centre=c;}
 	void setColour(Colour c){this->colour=c;}
 	virtual void draw() const;
+	virtual void intersection(DynamicCircle * dynamicCircle);
 };
 
 

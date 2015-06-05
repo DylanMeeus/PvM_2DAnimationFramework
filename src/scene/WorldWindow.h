@@ -2,6 +2,8 @@
 #define WORLDWINDOW_H_
 
 #include "shape/IDrawable.h"
+#include "shape/DynamicCircle.h"
+
 
 class WorldWindow : public IDrawable{
 	double left, right, bottom, top;
@@ -17,6 +19,7 @@ public:
 	void setTop(double top) {this->top = top;}
 	double getRatio(){return (right-left)/(top-bottom);}
 	virtual void draw() const{}
+	virtual void intersection(DynamicCircle * dynamicCircle);
 };
 
 #endif /* WORLDWINDOW_H_ */

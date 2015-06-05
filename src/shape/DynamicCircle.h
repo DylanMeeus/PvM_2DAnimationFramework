@@ -29,7 +29,8 @@ public:
 
 	Vector getVelocity() const {return velocity;}
 	void setVelocity(Vector vel){velocity=vel;}
-	virtual void update();
+	virtual void update(const Scene& scene);
+	virtual void intersection(DynamicCircle * dynamicCircle);
 };
 
 #endif /* SRC_SHAPE_DYNAMICCIRCLE_H_ */
