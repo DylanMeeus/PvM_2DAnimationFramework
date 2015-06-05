@@ -1,7 +1,9 @@
 #ifndef WORLDWINDOW_H_
 #define WORLDWINDOW_H_
 
-class WorldWindow {
+#include "shape/IDrawable.h"
+
+class WorldWindow : public IDrawable{
 	double left, right, bottom, top;
 public:
 	WorldWindow(double left=0, double right=0, double bottom=0, double top=0):left(left),right(right),bottom(bottom),top(top){}
@@ -14,6 +16,7 @@ public:
 	double getTop() const {return top;}
 	void setTop(double top) {this->top = top;}
 	double getRatio(){return (right-left)/(top-bottom);}
+	virtual void draw() const{}
 };
 
 #endif /* WORLDWINDOW_H_ */

@@ -12,6 +12,7 @@
 #include <vector>
 #include "shape/IDrawable.h"
 #include "shape/IAnimatable.h"
+#include "WorldWindow.h"
 
 class Scene
 {
@@ -22,6 +23,7 @@ private:
 
 public:
 	Scene(){}
+	Scene(WorldWindow * worldWindow){drawables.push_back(worldWindow);}
 	std::vector<IDrawable*> getDrawables() const {return drawables;}
 	std::vector<IAnimatable*> getAnimatables() const {return animatables;}
 	void addDrawable(IDrawable* drawable){drawables.push_back(drawable);}
