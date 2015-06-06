@@ -7,36 +7,16 @@
 
 #include "DynamicCircle.h"
 #include <iostream>
-
-
+#include <vector>
+#include "scene/Scene.h"
 
 void DynamicCircle::update(const Scene& scene)
 {
-	// get current position
-	Point current = this->getCentre();
-	current.x += this->velocity.x;
-	current.y += this->velocity.y;
-
-	Vector m = Vector();
-	if (current.x >= 1000)
+	std::vector<IDrawable*> drawables = scene.getDrawables();
+	for (std::vector<IDrawable>::size_type i = 0; i != drawables.size(); i++)
 	{
-		m = Vector(current, Point(current.x - 1, current.y));
-	} else if (current.x <= 0)
-	{
-		m = Vector(current, Point(current.x +1, current.y));
+		drawables[i]->intersection(this);
 	}
-	if(current.y <= 0)
-	{
-		m = Vector(current, Point(current.x, current.y+1));
-	}
-	else if(current.y >= 500)
-	{
-		m = Vector(current, Point(current.x, current.y-1));
-	}
-	Vector w = this->velocity - 2 * (this->velocity.dot(m) * m);
-	this->velocity = w;
-	this->setCentre(current);
-
 }
 
 void DynamicCircle::intersection(DynamicCircle * dynamicCircle)

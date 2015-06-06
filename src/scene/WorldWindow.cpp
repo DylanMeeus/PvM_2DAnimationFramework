@@ -7,6 +7,7 @@
 
 
 #include "WorldWindow.h"
+#include <iostream>
 
 void WorldWindow::intersection(DynamicCircle * dynamicCircle)
 {
@@ -16,7 +17,7 @@ void WorldWindow::intersection(DynamicCircle * dynamicCircle)
 	current.y += dynamicCircle->getVelocity().y;
 
 	Vector m = Vector();
-	if (current.x >= 1000)
+	if (current.x >= this->right)
 	{
 		m = Vector(current, Point(current.x - 1, current.y));
 	} else if (current.x <= 0)
@@ -27,7 +28,7 @@ void WorldWindow::intersection(DynamicCircle * dynamicCircle)
 	{
 		m = Vector(current, Point(current.x, current.y+1));
 	}
-	else if(current.y >= 500)
+	else if(current.y >= this->top)
 	{
 		m = Vector(current, Point(current.x, current.y-1));
 	}

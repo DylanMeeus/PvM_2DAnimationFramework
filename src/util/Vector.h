@@ -17,6 +17,8 @@ public:
 	Vector(double x=0, double y=0): x(x), y(y) { }
 	Vector(Point a, Point b);
 	friend Vector operator+(const Vector &v, const Vector &w);
+	friend Vector operator+(const Vector &v, const Point &p);
+	friend Vector operator+(const Point &p,const Vector &v);
 	friend Vector operator-(const Vector &v, const Vector &w);
 	friend Vector operator*(const Vector &v, const Vector &w);
 	friend Vector operator*(const Vector &v, double scalar);
