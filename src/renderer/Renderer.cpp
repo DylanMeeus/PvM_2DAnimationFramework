@@ -30,6 +30,7 @@ void Renderer::render()
 	// Get them from the scene
 
 	std::vector<IDrawable*> drawables = this->scene.getDrawables();
+
 	for (std::vector<IDrawable>::size_type i = 0;i != drawables.size(); i++)
 	{
 		drawables[i]->draw();

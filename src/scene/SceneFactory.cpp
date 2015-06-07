@@ -12,6 +12,7 @@
 #include "util/Colour.h"
 #include "shape/Circle.h"
 #include "shape/DynamicCircle.h"
+#include "shape/Boid.h"
 
 Scene SceneFactory::createScene(const std::string & filename,
 		WorldWindow * worldWindow)
@@ -66,6 +67,16 @@ Scene SceneFactory::createScene(const std::string & filename,
 				dyncircle->setColour(colour);
 				scene.addDrawable(dyncircle);
 				scene.addAnimatable(dyncircle);
+			}
+			if(key.compare("boid")==0)
+			{
+				std::cout << "Boid" << std::endl;
+				double x,y,s,vx,vy;
+				sdlfile >> x >> y >> s >> vx >> vy;
+				Boid * boid = new Boid(Point(x,y),s,Vector(vx,vy),colour);
+				scene.addDrawable(boid);
+				scene.addAnimatable(boid);
+				std::cout << "Added!" << std::endl;
 			}
 		}
 	}
