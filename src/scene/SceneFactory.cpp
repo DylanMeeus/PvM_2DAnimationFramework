@@ -13,15 +13,17 @@
 #include "shape/Circle.h"
 #include "shape/DynamicCircle.h"
 #include "shape/Boid.h"
+#include "shape/Flock.h";
 
 Scene SceneFactory::createScene(const std::string & filename,
 		WorldWindow * worldWindow)
 {
 	std::ifstream sdlfile(filename.c_str());
 	Scene scene = Scene(worldWindow);
-
+	bool addflock = false;
 	//	scene.addDrawable(worldWindow);
 	Colour colour;
+	Flock* flock = new Flock(colour);
 	if (!sdlfile)
 	{
 		std::cout << "file could not be opened!\n" << std::endl;
@@ -68,15 +70,33 @@ Scene SceneFactory::createScene(const std::string & filename,
 				scene.addDrawable(dyncircle);
 				scene.addAnimatable(dyncircle);
 			}
-			if(key.compare("boid")==0)
+			if (key.compare("boid") == 0)
 			{
 				std::cout << "Boid" << std::endl;
-				double x,y,s,vx,vy;
+				double x, y, s, vx, vy;
 				sdlfile >> x >> y >> s >> vx >> vy;
-				Boid * boid = new Boid(Point(x,y),s,Vector(vx,vy),colour);
+				Boid * boid = new Boid(Point(x, y), s, Vector(vx, vy), colour);
 				scene.addDrawable(boid);
 				scene.addAnimatable(boid);
-				std::cout << "Added!" << std::endl;
+			}
+			if (key.compare("flock") == 0)
+			{
+				std::cout << "Flock" << std::endl;
+				flock = new Flock(colour);
+				double amount;
+				sdlfile >> amount;
+				std::cout << amount << std::endl;
+				for (int i = 0; i < amount; i++)
+				{
+					double x, y, s, vx, vy;
+					sdlfile >> x >> y >> s >> vx >> vy;
+					Boid * boid = new Boid(Point(x, y), s, Vector(vx, vy),
+							colour);
+					flock->addBoid(boid);
+				}
+				// Read the next number of flocks
+				scene.addDrawable(flock);
+				scene.addAnimatable(flock);
 			}
 		}
 	}

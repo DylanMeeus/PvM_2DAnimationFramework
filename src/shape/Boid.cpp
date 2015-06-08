@@ -21,6 +21,27 @@ void Boid::update(const Scene& scene)
 {
 	this->centre.x += this->velocity.x;
 	this->centre.y += this->velocity.y;
+//	this->velocity = this->velocity * 0.995;
+//	this->velocity.y *= 1.01;
+
+	Vector w = Vector(0,0);
+	if(this->centre.y >= 500-150)
+	{
+		w = Vector(0,-0.4);
+	}
+	else if(this->centre.x <= 150)
+	{
+		w = Vector(0.4,0);
+	}
+	else if(this->centre.y <= 150)
+	{
+		w = Vector(0,0.4);
+	}
+	else if(this->centre.x >= 850)
+	{
+		w = Vector(-0.4,0);
+	}
+		this->velocity = this->velocity+w;
 }
 
 void Boid::draw() const
