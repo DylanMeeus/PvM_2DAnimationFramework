@@ -23,6 +23,7 @@ public:
 	friend Vector operator*(const Vector &v, const Vector &w);
 	friend Vector operator*(const Vector &v, double scalar);
 	friend Vector operator*(double scalar,const Vector &v);
+	friend Vector operator/(const Vector &v, const double scalar);
 	double dot(const Vector &w);
 	double length();
 	void normalize();

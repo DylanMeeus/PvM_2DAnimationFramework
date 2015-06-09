@@ -17,6 +17,7 @@
 #include "util/Point.h"
 #include <iostream>
 #include <cmath>
+#define PI 3.1415
 void Boid::update(const Scene& scene)
 {
 	this->centre.x += this->velocity.x;
@@ -24,24 +25,21 @@ void Boid::update(const Scene& scene)
 //	this->velocity = this->velocity * 0.995;
 //	this->velocity.y *= 1.01;
 
-	Vector w = Vector(0,0);
-	if(this->centre.y >= 500-150)
+	Vector w = Vector(0, 0);
+	if (this->centre.y >= 500 - 150)
 	{
-		w = Vector(0,-0.4);
-	}
-	else if(this->centre.x <= 150)
+		w = Vector(0, -0.4);
+	} else if (this->centre.x <= 150)
 	{
-		w = Vector(0.4,0);
-	}
-	else if(this->centre.y <= 150)
+		w = Vector(0.4, 0);
+	} else if (this->centre.y <= 150)
 	{
-		w = Vector(0,0.4);
-	}
-	else if(this->centre.x >= 850)
+		w = Vector(0, 0.4);
+	} else if (this->centre.x >= 850)
 	{
-		w = Vector(-0.4,0);
+		w = Vector(-0.4, 0);
 	}
-		this->velocity = this->velocity+w;
+	this->velocity = this->velocity + w;
 }
 
 void Boid::draw() const
@@ -58,22 +56,20 @@ void Boid::draw() const
 	 * The angle between two vectors = v.w / (|v||w|)
 	 */
 
-	Vector u = Vector(this->centre, Point((this->centre.x+1),this->centre.y));
+	Vector u = Vector(this->centre, Point((this->centre.x + 1), this->centre.y));
 	Vector vNorm = this->velocity;
-	double theta = (u.dot(this->velocity))/(u.length()*vNorm.length());
-	//std::cout << theta << std::endl;
+	double theta = (u.dot(this->velocity)) / (u.length() * vNorm.length());
+
+	theta = acos(theta) * 180 / PI;
 
 	glColor3f(this->colour.r, this->colour.g, this->colour.b);
 	glBegin(GL_POLYGON);
-	Point p = Point((this->velocity*this->size).x,(this->velocity*this->size).y);
-	glVertex2f(this->centre.x + (this->size * cos(theta)),
-				this->centre.y + (this->size * sin(theta)));
+	Point p = Point((this->velocity * this->size).x, (this->velocity * this->size).y);
+	glVertex2f(this->centre.x + (this->size * cos(theta)), this->centre.y + (this->size * sin(theta)));
 	theta += 150;
-	glVertex2f(this->centre.x + (this->size * cos(theta)),
-				this->centre.y + (this->size * sin(theta)));
+	glVertex2f(this->centre.x + (this->size * cos(theta)), this->centre.y + (this->size * sin(theta)));
 	theta += 60;
-	glVertex2f(this->centre.x + (this->size * cos(theta)),
-				this->centre.y + (this->size * sin(theta)));
+	glVertex2f(this->centre.x + (this->size * cos(theta)), this->centre.y + (this->size * sin(theta)));
 	glEnd();
 }
 

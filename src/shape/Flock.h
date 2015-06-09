@@ -19,15 +19,26 @@ class Flock: public Shape, public IAnimatable
 {
 private:
 	std::vector<Boid*> boids = std::vector<Boid*>();
-
+	double cohesion, separation, alignment, damping, maxSpeed;
 public:
-	Flock(Colour colour){
+	Flock(Colour colour)
+	{
+		cohesion = 0.008;
+		separation = 30;
+		alignment = 0.025;
+		damping = 0.15;
+		maxSpeed = 8;
 		Shape::setColour(colour);
 	}
 	void addBoid(Boid* boid);
+	Vector rule1(unsigned index); // cohesion (index=the current boid)
+	Vector rule2(unsigned index); // separation
+	Vector rule3(unsigned index); // alignment
+
 	virtual void draw() const;
 	virtual void update(const Scene& scene);
 	virtual void intersection(DynamicCircle* dynamicCircle);
+
 };
 
 #endif /* SRC_SHAPE_FLOCK_H_ */

@@ -60,3 +60,7 @@ Vector operator-(const Vector &v, const Vector &w)
 	return Vector(v.x - w.x, v.y - w.y);
 }
 
+Vector operator/(const Vector &v, const double scalar)
+{
+	return Vector(v.x/scalar, v.y/scalar);
+}
